@@ -1065,7 +1065,7 @@
       </a>
       <div class="nav-links">
         <a href="dashboard.html" class="nav-link">Dashboard</a>
-        <a href="guardrails.html" class="nav-link">Guardrails</a>
+        <a href="alerts.html" class="nav-link">Alerts</a>
         <a href="settings.html" class="nav-link nav-link-active">Settings</a>
         <div class="nav-avatar">JD</div>
       </div>
@@ -1181,7 +1181,7 @@
               </h2>
 
               <div class="form-group">
-                <textarea id="bio" class="form-input" rows="4" placeholder="Tell us a little about yourself..." style="resize: vertical; font-family: inherit;">Building safe AI systems at Acme. Interested in LLM guardrails and prompt injection prevention.</textarea>
+                <textarea id="bio" class="form-input" rows="4" placeholder="Tell us a little about yourself..." style="resize: vertical; font-family: inherit;">Building cost-aware AI systems at Acme. Interested in LLM spend tracking and budget optimization.</textarea>
                 <p class="form-hint">Max 280 characters. This will be visible to your team members.</p>
               </div>
 
@@ -1205,7 +1205,7 @@
               <div class="toggle-group">
                 <div class="toggle-info">
                   <div class="toggle-label">Email alerts</div>
-                  <div class="toggle-desc">Receive email notifications for critical guardrail events and policy violations.</div>
+                  <div class="toggle-desc">Receive email notifications for critical cost events and budget violations.</div>
                 </div>
                 <label class="jelly-toggle">
                   <input type="checkbox" checked>
@@ -1227,7 +1227,7 @@
               <div class="toggle-group">
                 <div class="toggle-info">
                   <div class="toggle-label">Weekly digest</div>
-                  <div class="toggle-desc">Get a summary of all guardrail activity every Monday morning.</div>
+                  <div class="toggle-desc">Get a summary of all cost activity and predictions every Monday morning.</div>
                 </div>
                 <label class="jelly-toggle">
                   <input type="checkbox">
@@ -1238,7 +1238,7 @@
               <div class="toggle-group">
                 <div class="toggle-info">
                   <div class="toggle-label">New feature announcements</div>
-                  <div class="toggle-desc">Be the first to know about new guardrail types and platform updates.</div>
+                  <div class="toggle-desc">Be the first to know about new cost tracking features and platform updates.</div>
                 </div>
                 <label class="jelly-toggle">
                   <input type="checkbox" checked>
@@ -1321,7 +1321,7 @@
 
               <div class="form-group">
                 <label class="form-label" for="webhookUrl">Webhook URL</label>
-                <input type="url" id="webhookUrl" class="form-input" value="https://api.company.com/webhooks/guardrail" placeholder="https://your-domain.com/webhook">
+                <input type="url" id="webhookUrl" class="form-input" value="https://api.company.com/webhooks/alerts" placeholder="https://your-domain.com/webhook">
                 <p class="form-hint">We'll POST event payloads to this URL. Must return 200 OK.</p>
               </div>
 
@@ -1413,7 +1413,7 @@
 
               <div class="danger-zone">
                 <div class="danger-title">Danger Zone</div>
-                <div class="danger-desc">Once you delete your account, there is no going back. All your guardrails, policies, and data will be permanently removed.</div>
+                <div class="danger-desc">Once you delete your account, there is no going back. All your budgets, alerts, and data will be permanently removed.</div>
                 <button class="jelly-btn jelly-btn-danger">Delete Account</button>
               </div>
             </div>

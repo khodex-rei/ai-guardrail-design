@@ -1068,66 +1068,55 @@
         <div class="step-card">
           <div class="step-header">
             <div class="step-eyebrow">Step 3 of 3</div>
-            <h1 class="step-title">Set your first guardrail</h1>
-            <p class="step-subtitle">Pick a preset to protect your AI outputs. You can customize these later in the dashboard.</p>
+            <h1 class="step-title">Set up budgets &amp; alerts</h1>
+            <p class="step-subtitle">Configure cost thresholds and alert channels so you never get surprised by a bill.</p>
           </div>
-          <div class="guardrail-list">
-            <div class="guardrail-option" onclick="toggleGuardrail(this)">
-              <div class="guardrail-check">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-              </div>
-              <div class="guardrail-info">
-                <div class="guardrail-name">PII Detection</div>
-                <div class="guardrail-desc">Block or redact personally identifiable information like emails, phone numbers, and SSNs</div>
-              </div>
+
+          <div class="form-group" style="position: relative; z-index: 1;">
+            <label class="form-label">Monthly budget limit</label>
+            <div style="display: flex; align-items: center; gap: var(--s-3);">
+              <span style="font-size: 18px; font-weight: 600; color: var(--ink-secondary);">$</span>
+              <input type="number" class="form-input" value="500" placeholder="500" style="max-width: 200px;">
             </div>
-            <div class="guardrail-option" onclick="toggleGuardrail(this)">
-              <div class="guardrail-check">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
+            <p style="font-size: 12px; color: var(--ink-muted); margin-top: var(--s-2);">We'll alert you at 80% and block new requests at 100%.</p>
+          </div>
+
+          <div class="form-group" style="position: relative; z-index: 1;">
+            <label class="form-label">Alert channels</label>
+            <div class="provider-grid" style="grid-template-columns: repeat(3, 1fr);">
+              <div class="provider-card selected" onclick="toggleProvider(this)">
+                <div class="provider-check">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="provider-name">Email</div>
+                <div class="provider-desc">Daily digest + critical alerts</div>
               </div>
-              <div class="guardrail-info">
-                <div class="guardrail-name">Toxicity Filter</div>
-                <div class="guardrail-desc">Detect and block harmful, offensive, or inappropriate content in model outputs</div>
+              <div class="provider-card" onclick="toggleProvider(this)">
+                <div class="provider-check">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="provider-name">Slack</div>
+                <div class="provider-desc">Real-time channel notifications</div>
               </div>
-            </div>
-            <div class="guardrail-option selected" onclick="toggleGuardrail(this)">
-              <div class="guardrail-check">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-              </div>
-              <div class="guardrail-info">
-                <div class="guardrail-name">Prompt Injection Shield</div>
-                <div class="guardrail-desc">Prevent jailbreaks, system prompt leaks, and indirect prompt injection attacks</div>
-              </div>
-            </div>
-            <div class="guardrail-option" onclick="toggleGuardrail(this)">
-              <div class="guardrail-check">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-              </div>
-              <div class="guardrail-info">
-                <div class="guardrail-name">Hallucination Check</div>
-                <div class="guardrail-desc">Flag unsupported claims and factual inconsistencies in AI-generated responses</div>
-              </div>
-            </div>
-            <div class="guardrail-option" onclick="toggleGuardrail(this)">
-              <div class="guardrail-check">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-              </div>
-              <div class="guardrail-info">
-                <div class="guardrail-name">Cost &amp; Rate Limits</div>
-                <div class="guardrail-desc">Set token budgets, request rate limits, and cost alerts per provider</div>
+              <div class="provider-card" onclick="toggleProvider(this)">
+                <div class="provider-check">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="provider-name">PagerDuty</div>
+                <div class="provider-desc">On-call escalation</div>
               </div>
             </div>
           </div>
+
+          <div class="form-group" style="position: relative; z-index: 1;">
+            <label class="form-label">Anomaly sensitivity</label>
+            <div style="display: flex; align-items: center; gap: var(--s-4);">
+              <input type="range" min="1" max="3" value="2" style="flex: 1; accent-color: var(--lavender);">
+              <span style="font-size: 13px; font-weight: 500; color: var(--ink-secondary); min-width: 80px;">Medium</span>
+            </div>
+            <p style="font-size: 12px; color: var(--ink-muted); margin-top: var(--s-2);">How aggressively we flag unusual spend patterns.</p>
+          </div>
+
           <div class="nav-buttons">
             <button type="button" class="jelly-btn jelly-btn-secondary" onclick="goToStep(2)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1160,7 +1149,7 @@
           <div class="step-header">
             <div class="step-eyebrow">All set</div>
             <h1 class="step-title">You're ready to go</h1>
-            <p class="step-subtitle">Your workspace is configured and your first guardrail is active. Redirecting to your dashboard...</p>
+            <p class="step-subtitle">Your workspace is configured with cost tracking and alerts. Redirecting to your dashboard...</p>
           </div>
           <div class="nav-buttons" style="justify-content: center;">
             <a href="dashboard.html" class="jelly-btn jelly-btn-primary">

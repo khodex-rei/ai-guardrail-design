@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guardrails — AI Guardrail</title>
+  <title>Budgets & Alerts — AI Guardrail</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1291,7 +1291,7 @@
     <main class="main">
       <!-- Top Bar -->
       <div class="top-bar">
-        <h1 class="page-title">Guardrails & Policies</h1>
+        <h1 class="page-title">Budgets & Alerts</h1>
         <div class="top-bar-actions">
           <button class="jelly-btn jelly-btn-secondary">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1389,22 +1389,22 @@
           <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           Policy Configuration
         </div>
-        <h2 class="section-title">Active Guardrails</h2>
-        <p class="section-subtitle">Configure detection thresholds, rule conditions, and response actions for each policy.</p>
+        <h2 class="section-title">Active Budgets</h2>
+        <p class="section-subtitle">Configure cost thresholds, budget limits, anomaly detection rules, and notification preferences.</p>
       </div>
 
-      <!-- Policy List -->
+      <!-- Budget List -->
       <div class="policy-list">
-        <!-- Policy 1: Prompt Injection -->
+        <!-- Budget 1: Monthly Spend Cap -->
         <div class="policy-item">
           <div class="policy-header">
             <div class="policy-meta">
               <div class="policy-icon policy-icon-pink">
-                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
               </div>
               <div class="policy-info">
-                <div class="policy-name">Prompt Injection Defense</div>
-                <div class="policy-desc">Detects and blocks attempts to override system instructions through malicious user prompts.</div>
+                <div class="policy-name">Monthly Spend Cap</div>
+                <div class="policy-desc">Hard limit on total LLM spend per month across all providers and workspaces.</div>
               </div>
             </div>
             <label class="jelly-toggle">
@@ -1416,27 +1416,27 @@
           <div class="rules-grid">
             <div class="rule-card">
               <div class="rule-header">
-                <span class="rule-name">System Override Attempt</span>
-                <span class="rule-badge rule-badge-block">Block</span>
+                <span class="rule-name">80% Warning</span>
+                <span class="rule-badge rule-badge-flag">Alert</span>
               </div>
               <div class="rule-body">
-                <div class="rule-condition">If prompt contains <strong>"ignore previous instructions"</strong> or <strong>"system prompt"</strong></div>
+                <div class="rule-condition">When monthly spend exceeds <strong>$400</strong> of <strong>$500</strong> budget</div>
                 <span class="rule-action">
-                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-                  Reject request
+                  <svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+                  Email + Slack alert
                 </span>
               </div>
             </div>
             <div class="rule-card">
               <div class="rule-header">
-                <span class="rule-name">Role Confusion</span>
-                <span class="rule-badge rule-badge-flag">Flag</span>
+                <span class="rule-name">100% Block</span>
+                <span class="rule-badge rule-badge-block">Block</span>
               </div>
               <div class="rule-body">
-                <div class="rule-condition">If prompt attempts to redefine <strong>assistant role</strong> or <strong>persona</strong></div>
+                <div class="rule-condition">When monthly spend reaches <strong>$500</strong> budget limit</div>
                 <span class="rule-action">
-                  <svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
-                  Log & notify
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                  Reject new requests
                 </span>
               </div>
             </div>
@@ -1444,23 +1444,23 @@
 
           <div class="threshold-section">
             <div class="threshold-label">
-              <span class="threshold-name">Detection Threshold</span>
-              <span class="threshold-value" id="threshold-val-1">85%</span>
+              <span class="threshold-name">Budget Limit</span>
+              <span class="threshold-value" id="threshold-val-1">$500</span>
             </div>
-            <input type="range" class="threshold-slider" min="0" max="100" value="85" data-target="threshold-val-1">
+            <input type="range" class="threshold-slider" min="100" max="5000" step="100" value="500" data-target="threshold-val-1">
           </div>
         </div>
 
-        <!-- Policy 2: Toxicity Filter -->
+        <!-- Budget 2: Per-Provider Limit -->
         <div class="policy-item">
           <div class="policy-header">
             <div class="policy-meta">
               <div class="policy-icon policy-icon-blue">
-                <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
               </div>
               <div class="policy-info">
-                <div class="policy-name">Toxicity & Hate Speech</div>
-                <div class="policy-desc">Filters harmful, offensive, or discriminatory content from both inputs and outputs.</div>
+                <div class="policy-name">Per-Provider Budget</div>
+                <div class="policy-desc">Separate caps for OpenAI, Anthropic, and other providers to prevent runaway costs.</div>
               </div>
             </div>
             <label class="jelly-toggle">
@@ -1472,53 +1472,27 @@
           <div class="rules-grid">
             <div class="rule-card">
               <div class="rule-header">
-                <span class="rule-name">Severe Toxicity</span>
-                <span class="rule-badge rule-badge-block">Block</span>
+                <span class="rule-name">OpenAI Cap</span>
+                <span class="rule-badge rule-badge-flag">Alert</span>
               </div>
               <div class="rule-body">
-                <div class="rule-condition">If toxicity score exceeds <strong>0.85</strong> or contains <strong>hate symbols</strong></div>
-                <span class="rule-action">
-                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-                  Reject request
-                </span>
-              </div>
-            </div>
-            <div class="rule-card">
-              <div class="rule-header">
-                <span class="rule-name">Moderate Toxicity</span>
-                <span class="rule-badge rule-badge-flag">Flag</span>
-              </div>
-              <div class="rule-body">
-                <div class="rule-condition">If toxicity score is between <strong>0.5 — 0.85</strong></div>
+                <div class="rule-condition">When OpenAI spend exceeds <strong>$200</strong> / month</div>
                 <span class="rule-action">
                   <svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
-                  Log & notify
+                  Alert team lead
                 </span>
               </div>
             </div>
             <div class="rule-card">
               <div class="rule-header">
-                <span class="rule-name">Profanity Filter</span>
-                <span class="rule-badge rule-badge-allow">Allow</span>
+                <span class="rule-name">Anthropic Cap</span>
+                <span class="rule-badge rule-badge-flag">Alert</span>
               </div>
               <div class="rule-body">
-                <div class="rule-condition">If content contains <strong>profanity list</strong> but toxicity is low</div>
+                <div class="rule-condition">When Anthropic spend exceeds <strong>$150</strong> / month</div>
                 <span class="rule-action">
-                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-                  Allow with warning
-                </span>
-              </div>
-            </div>
-            <div class="rule-card">
-              <div class="rule-header">
-                <span class="rule-name">Self-Harm Content</span>
-                <span class="rule-badge rule-badge-block">Block</span>
-              </div>
-              <div class="rule-body">
-                <div class="rule-condition">If content indicates <strong>self-harm intent</strong> or <strong>suicidal ideation</strong></div>
-                <span class="rule-action">
-                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-                  Reject + escalate
+                  <svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+                  Alert team lead
                 </span>
               </div>
             </div>
@@ -1526,23 +1500,23 @@
 
           <div class="threshold-section">
             <div class="threshold-label">
-              <span class="threshold-name">Toxicity Threshold</span>
-              <span class="threshold-value" id="threshold-val-2">72%</span>
+              <span class="threshold-name">OpenAI Limit</span>
+              <span class="threshold-value" id="threshold-val-2">$200</span>
             </div>
-            <input type="range" class="threshold-slider" min="0" max="100" value="72" data-target="threshold-val-2">
+            <input type="range" class="threshold-slider" min="50" max="2000" step="50" value="200" data-target="threshold-val-2">
           </div>
         </div>
 
-        <!-- Policy 3: PII Protection -->
+        <!-- Budget 3: Anomaly Detection -->
         <div class="policy-item">
           <div class="policy-header">
             <div class="policy-meta">
               <div class="policy-icon policy-icon-lavender">
-                <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
               </div>
               <div class="policy-info">
-                <div class="policy-name">PII & Data Leakage</div>
-                <div class="policy-desc">Prevents exposure of personally identifiable information and sensitive data in responses.</div>
+                <div class="policy-name">Anomaly Detection</div>
+                <div class="policy-desc">Automatically flag unusual spend spikes, token surges, or unexpected provider usage.</div>
               </div>
             </div>
             <label class="jelly-toggle">
@@ -1554,40 +1528,40 @@
           <div class="rules-grid">
             <div class="rule-card">
               <div class="rule-header">
-                <span class="rule-name">SSN Detection</span>
-                <span class="rule-badge rule-badge-block">Block</span>
+                <span class="rule-name">Daily Spike</span>
+                <span class="rule-badge rule-badge-block">Critical</span>
               </div>
               <div class="rule-body">
-                <div class="rule-condition">If output contains <strong>Social Security Numbers</strong> or <strong>national IDs</strong></div>
+                <div class="rule-condition">If daily spend exceeds <strong>3x</strong> 7-day rolling average</div>
                 <span class="rule-action">
                   <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-                  Redact + alert
+                  PagerDuty + block
                 </span>
               </div>
             </div>
             <div class="rule-card">
               <div class="rule-header">
-                <span class="rule-name">Credit Card Numbers</span>
-                <span class="rule-badge rule-badge-block">Block</span>
+                <span class="rule-name">Hourly Surge</span>
+                <span class="rule-badge rule-badge-flag">Warn</span>
               </div>
               <div class="rule-body">
-                <div class="rule-condition">If output contains <strong>credit card patterns</strong> or <strong>bank account numbers</strong></div>
-                <span class="rule-action">
-                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-                  Redact + alert
-                </span>
-              </div>
-            </div>
-            <div class="rule-card">
-              <div class="rule-header">
-                <span class="rule-name">Email Addresses</span>
-                <span class="rule-badge rule-badge-flag">Flag</span>
-              </div>
-              <div class="rule-body">
-                <div class="rule-condition">If output exposes <strong>personal email</strong> or <strong>phone numbers</strong></div>
+                <div class="rule-condition">If hourly spend exceeds <strong>2x</strong> typical peak</div>
                 <span class="rule-action">
                   <svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
-                  Log & mask
+                  Slack alert
+                </span>
+              </div>
+            </div>
+            <div class="rule-card">
+              <div class="rule-header">
+                <span class="rule-name">New Model Alert</span>
+                <span class="rule-badge rule-badge-allow">Info</span>
+              </div>
+              <div class="rule-body">
+                <div class="rule-condition">When a <strong>new model</strong> or <strong>provider</strong> is used for the first time</div>
+                <span class="rule-action">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                  Log only
                 </span>
               </div>
             </div>
@@ -1595,27 +1569,27 @@
 
           <div class="threshold-section">
             <div class="threshold-label">
-              <span class="threshold-name">PII Confidence Threshold</span>
-              <span class="threshold-value" id="threshold-val-3">90%</span>
+              <span class="threshold-name">Sensitivity</span>
+              <span class="threshold-value" id="threshold-val-3">Medium</span>
             </div>
-            <input type="range" class="threshold-slider" min="0" max="100" value="90" data-target="threshold-val-3">
+            <input type="range" class="threshold-slider" min="1" max="3" step="1" value="2" data-target="threshold-val-3">
           </div>
         </div>
 
-        <!-- Policy 4: Output Validation -->
+        <!-- Budget 4: Notification Preferences -->
         <div class="policy-item">
           <div class="policy-header">
             <div class="policy-meta">
               <div class="policy-icon policy-icon-cyan">
-                <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
               </div>
               <div class="policy-info">
-                <div class="policy-name">Output Validation</div>
-                <div class="policy-desc">Ensures AI responses are factual, appropriate, and aligned with configured guidelines.</div>
+                <div class="policy-name">Notification Preferences</div>
+                <div class="policy-desc">Choose how and where you receive cost and anomaly alerts.</div>
               </div>
             </div>
             <label class="jelly-toggle">
-              <input type="checkbox">
+              <input type="checkbox" checked>
               <div class="jelly-toggle-track"><div class="jelly-toggle-thumb"></div></div>
             </label>
           </div>
@@ -1623,27 +1597,27 @@
           <div class="rules-grid">
             <div class="rule-card">
               <div class="rule-header">
-                <span class="rule-name">Hallucination Check</span>
-                <span class="rule-badge rule-badge-flag">Flag</span>
+                <span class="rule-name">Email Digest</span>
+                <span class="rule-badge rule-badge-allow">Daily</span>
               </div>
               <div class="rule-body">
-                <div class="rule-condition">If response contains <strong>unverifiable claims</strong> about facts or data</div>
+                <div class="rule-condition">Send a <strong>daily summary</strong> of spend, predictions, and anomalies</div>
                 <span class="rule-action">
-                  <svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
-                  Add disclaimer
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                  Enabled
                 </span>
               </div>
             </div>
             <div class="rule-card">
               <div class="rule-header">
-                <span class="rule-name">Length Limit</span>
-                <span class="rule-badge rule-badge-allow">Allow</span>
+                <span class="rule-name">Slack Webhook</span>
+                <span class="rule-badge rule-badge-allow">Real-time</span>
               </div>
               <div class="rule-body">
-                <div class="rule-condition">If response exceeds <strong>2048 tokens</strong> or <strong>10 paragraphs</strong></div>
+                <div class="rule-condition">Post <strong>critical alerts</strong> to #cost-alerts channel</div>
                 <span class="rule-action">
                   <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-                  Truncate gracefully
+                  Connected
                 </span>
               </div>
             </div>
@@ -1651,17 +1625,17 @@
 
           <div class="threshold-section">
             <div class="threshold-label">
-              <span class="threshold-name">Factuality Confidence</span>
-              <span class="threshold-value" id="threshold-val-4">65%</span>
+              <span class="threshold-name">Quiet Hours</span>
+              <span class="threshold-value" id="threshold-val-4">10 PM — 7 AM</span>
             </div>
-            <input type="range" class="threshold-slider" min="0" max="100" value="65" data-target="threshold-val-4">
+            <input type="range" class="threshold-slider" min="0" max="24" value="22" data-target="threshold-val-4">
           </div>
         </div>
 
-        <!-- Add Policy Button -->
+        <!-- Add Budget Button -->
         <button class="add-policy-btn" id="addPolicyBottomBtn">
           <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          <span>Create New Policy</span>
+          <span>Create New Budget Rule</span>
         </button>
       </div>
 

@@ -1250,8 +1250,8 @@
               </div>
               <span class="severity-badge severity-low"><span class="severity-dot"></span>Low</span>
             </div>
-            <div class="threat-name">Toxicity</div>
-            <div class="threat-desc">Harmful, biased, or inappropriate content generation</div>
+            <div class="threat-name">Anomaly</div>
+            <div class="threat-desc">Unusual spend spikes or unexpected provider usage</div>
             <div class="threat-bar">
               <div class="threat-bar-track">
                 <div class="threat-bar-fill cyan" style="width: 8%"></div>
@@ -1279,7 +1279,7 @@
           <div class="incident-item">
             <div class="incident-status open"></div>
             <div class="incident-content">
-              <div class="incident-title">Hallucinated pricing data returned to customer</div>
+              <div class="incident-title">Unexpected cost spike in production API</div>
               <div class="incident-meta">Model: <strong>gpt-4o</strong> · Tenant: <strong>acme-corp</strong></div>
             </div>
             <span class="severity-badge severity-high"><span class="severity-dot"></span>High</span>
@@ -1299,7 +1299,7 @@
           <div class="incident-item">
             <div class="incident-status open"></div>
             <div class="incident-content">
-              <div class="incident-title">Jailbreak attempt via multi-turn conversation</div>
+              <div class="incident-title">Unauthorized model access from unknown IP</div>
               <div class="incident-meta">Model: <strong>gpt-4o-mini</strong> · Tenant: <strong>public-api</strong></div>
             </div>
             <span class="severity-badge severity-critical"><span class="severity-dot"></span>Critical</span>
@@ -1309,7 +1309,7 @@
           <div class="incident-item">
             <div class="incident-status resolved"></div>
             <div class="incident-content">
-              <div class="incident-title">PII detected in model output — auto-redacted</div>
+              <div class="incident-title">Budget threshold exceeded for sandbox environment</div>
               <div class="incident-meta">Model: <strong>gpt-4o</strong> · Tenant: <strong>healthcare-prod</strong></div>
             </div>
             <span class="severity-badge severity-high"><span class="severity-dot"></span>High</span>
@@ -1329,7 +1329,7 @@
           <div class="incident-item">
             <div class="incident-status investigating"></div>
             <div class="incident-content">
-              <div class="incident-title">Biased response pattern in support chatbot</div>
+              <div class="incident-title">Anomalous token usage in support chatbot</div>
               <div class="incident-meta">Model: <strong>gpt-4o</strong> · Tenant: <strong>support-prod</strong></div>
             </div>
             <span class="severity-badge severity-medium"><span class="severity-dot"></span>Medium</span>
@@ -1349,7 +1349,7 @@
           </div>
           <div class="mitigation-desc">Add input sanitization rules to catch injection patterns before they reach the model. This reduced incidents by 62% for similar tenants.</div>
           <a class="mitigation-action" href="guardrails.html">
-            Configure guardrail
+            Configure budget rule
             <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
         </div>
@@ -1362,8 +1362,8 @@
             <div class="mitigation-title">Review fact-checking pipeline</div>
           </div>
           <div class="mitigation-desc">Hallucination incidents spiked after v2.3.0. Consider enabling the RAG fact-checking layer for all production tenants.</div>
-          <a class="mitigation-action" href="quality.html">
-            Run evaluation
+          <a class="mitigation-action" href="usage.html">
+            Review usage
             <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
         </div>
@@ -1389,9 +1389,9 @@
             </div>
             <div class="mitigation-title">Set up automated rollback</div>
           </div>
-          <div class="mitigation-desc">Configure release gates to auto-rollback when hallucination or toxicity scores exceed thresholds within 15 minutes of deployment.</div>
-          <a class="mitigation-action" href="releases.html">
-            Configure releases
+          <div class="mitigation-desc">Configure auto-rollback when spend anomalies exceed thresholds within 15 minutes of deployment.</div>
+          <a class="mitigation-action" href="alerts.html">
+            Configure alerts
             <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
         </div>
