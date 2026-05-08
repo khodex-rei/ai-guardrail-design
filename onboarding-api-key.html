@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onboarding API Key — TokenLens</title>
+  <link rel="stylesheet" href="assets/auth-onboarding.css">
+</head>
+<body class="route-onboarding">
+  <header class="page-nav">
+    <div class="shell">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>TokenLens</span>
+      </a>
+      <nav class="nav-links" aria-label="Onboarding API key routes">
+        <a href="onboarding.html">/onboarding</a>
+        <span>/onboarding/api-key</span>
+        <a href="dashboard.html">Preview /app</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="shell page-grid">
+      <section class="card stack-lg">
+        <div>
+          <span class="kicker">/onboarding/api-key</span>
+          <h1>Generate an API key</h1>
+          <p class="lead">Show the full key once, then mask it after creation.</p>
+        </div>
+        <div class="progress"><span style="width:52%"></span></div>
+        <div class="status-line"><span class="dot success"></span><span>Default key name: <strong>Production API bootstrap</strong></span></div>
+        <div class="code-card">
+<pre>tl_live_51M4nYp6bFqDemoOnly_7w9a</pre>
+        </div>
+        <div class="row">
+          <button class="button" type="button">Copy key</button>
+          <a class="button secondary" href="onboarding-sdk.html">Continue to SDK setup</a>
+        </div>
+      </section>
+
+      <aside class="sidebar-grid">
+        <section class="state-card stack">
+          <span class="kicker success">After creation</span>
+          <p>Masked key example: <span class="inline-code">tl_live_xxxxxxxxx...7w9a</span></p>
+        </section>
+        <section class="state-card stack">
+          <span class="kicker warning">Prerequisite</span>
+          <p>If no project exists, redirect back to <span class="inline-code">/onboarding/project</span>.</p>
+        </section>
+        <section class="state-card stack">
+          <span class="kicker">Next step</span>
+          <p>When an API key already exists, skip ahead to <span class="inline-code">/onboarding/sdk</span>.</p>
+        </section>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

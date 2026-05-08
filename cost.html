@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cost analytics — TokenLens</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="projects.html"><div class="brand-mark"></div><div class="brand-copy"><strong>TokenLens</strong><span>LLM observability</span></div></a>
+      <div class="workspace-switcher"><span class="label">Workspace</span><strong>Acme AI Platform</strong></div>
+      <div class="nav-section"><h4>Projects</h4><a class="nav-link" href="projects.html">Project list</a><a class="nav-link" href="dashboard.html">Overview</a><a class="nav-link" href="quickstart.html">Quickstart</a><a class="nav-link" href="api-keys.html">API keys</a></div>
+      <div class="nav-section"><h4>Analytics</h4><a class="nav-link" href="usage.html">Usage</a><a class="nav-link active" href="cost.html">Cost</a><a class="nav-link" href="latency.html">Latency</a><a class="nav-link" href="errors.html">Errors</a><a class="nav-link" href="models.html">Models</a></div>
+      <div class="nav-section"><h4>Account</h4><a class="nav-link" href="settings.html">Settings</a><a class="nav-link" href="billing.html">Billing</a></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <div class="breadcrumbs">App / Projects / Customer Support Copilot / Cost</div>
+          <h1>Cost analytics</h1>
+          <p>A dedicated spend view for provider, model, and route breakdowns so the overview can stay concise.</p>
+        </div>
+        <div class="topbar-actions"><span class="select">Last 7 days</span><span class="select">Group by provider</span><a class="btn" href="usage.html">See usage</a><a class="btn primary" href="models.html">Inspect models</a></div>
+      </header>
+
+      <div class="container">
+        <section class="hero">
+          <div>
+            <span class="badge">Analytics</span>
+            <h2>Understand where spend comes from before you optimize.</h2>
+            <p>This page turns the older broken cost link into a coherent static placeholder focused on observability economics: estimated cost over time, expensive models, and costly routes.</p>
+          </div>
+          <aside>
+            <div class="section-label">Current context</div>
+            <ul class="kpi-list"><li>$8,214 estimated this week</li><li>OpenAI drives 61% of spend</li><li>Top expensive route: /summarize-thread</li><li>Recommended next action: compare cost per request by model</li></ul>
+          </aside>
+        </section>
+        
+        <div class="stats-grid">
+          <div class="stat"><div class="stat-label">Estimated cost</div><div class="stat-value">$8,214</div><div class="stat-sub">+9.4% vs last week</div></div>
+          <div class="stat"><div class="stat-label">Cost / 1k requests</div><div class="stat-value">$6.96</div><div class="stat-sub">Mostly stable</div></div>
+          <div class="stat"><div class="stat-label">Highest-cost model</div><div class="stat-value">claude-3.5-sonnet</div><div class="stat-sub">32% of spend on 18% of requests</div></div>
+          <div class="stat"><div class="stat-label">Highest-cost route</div><div class="stat-value code">/summarize-thread</div><div class="stat-sub">Long output tokens</div></div>
+        </div>
+
+        <div class="chart-grid">
+          <section class="chart-card large">
+            <div class="chart-header"><div><h3>Estimated cost over time</h3><div class="chart-subtitle">Daily spend trend</div></div><div class="legend"><span class="teal">Cost</span></div></div>
+            <div class="line-chart">
+              <svg class="chart-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <polyline fill="rgba(15,157,138,0.10)" stroke="none" points="0,82 0,74 16,71 32,69 48,61 64,55 80,49 100,46 100,82"></polyline>
+                <polyline fill="none" stroke="#0f9d8a" stroke-width="3" points="0,74 16,71 32,69 48,61 64,55 80,49 100,46"></polyline>
+              </svg>
+            </div>
+            <div class="axis-labels"><span>May 1</span><span>May 3</span><span>May 5</span><span>May 7</span></div>
+          </section>
+          <section class="chart-card">
+            <div class="chart-header"><div><h3>Spend by provider</h3><div class="chart-subtitle">Source-of-spend breakdown</div></div></div>
+            <div class="stacked-bars">
+              <div class="bar-row"><span>OpenAI</span><div class="bar-track"><div class="bar-fill" style="width:61%"></div></div><strong>$5.0k</strong></div>
+              <div class="bar-row"><span>Anthropic</span><div class="bar-track"><div class="bar-fill teal" style="width:26%"></div></div><strong>$2.1k</strong></div>
+              <div class="bar-row"><span>Google</span><div class="bar-track"><div class="bar-fill violet" style="width:9%"></div></div><strong>$739</strong></div>
+              <div class="bar-row"><span>Other</span><div class="bar-track"><div class="bar-fill amber" style="width:4%"></div></div><strong>$328</strong></div>
+            </div>
+          </section>
+        </div>
+
+        <div class="two-col">
+          <section class="table-card">
+            <div class="table-header"><div><h3>Cost by model</h3><div class="small muted">Use this before changing provider allocations</div></div></div>
+            <table>
+              <thead><tr><th>Model</th><th>Requests</th><th>Spend</th><th>Cost / req</th><th>Notes</th></tr></thead>
+              <tbody>
+                <tr><td>gpt-4.1-mini</td><td>792k</td><td>$3,884</td><td>$0.0049</td><td>High volume, efficient baseline</td></tr>
+                <tr><td>claude-3.5-sonnet</td><td>214k</td><td>$2,629</td><td>$0.0123</td><td>Long responses increase spend</td></tr>
+                <tr><td>text-embedding-3-large</td><td>119k</td><td>$702</td><td>$0.0059</td><td>Retrieval-heavy route support</td></tr>
+                <tr><td>gemini-1.5-pro</td><td>58k</td><td>$511</td><td>$0.0088</td><td>Used in escalation flows</td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section class="list-card">
+            <div class="list-header"><div><h3>Optimization ideas</h3><div class="small muted">Static recommendations for review</div></div></div>
+            <div class="summary-list">
+              <div class="summary-item"><div><strong>Move long summaries off the default path</strong><div class="small muted">/summarize-thread is expensive mainly because of long output lengths.</div></div></div>
+              <div class="summary-item"><div><strong>Compare premium model use by route</strong><div class="small muted">The models page should confirm whether the costlier model mix is intentional.</div></div></div>
+              <div class="summary-item"><div><strong>Watch cost alongside traffic</strong><div class="small muted">A cost increase without matching usage growth usually deserves immediate follow-up.</div></div></div>
+            </div>
+          </section>
+        </div>
+        
+      </div>
+    </main>
+  </div>
+</body>
+</html>

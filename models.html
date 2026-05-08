@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Models and providers — TokenLens</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="projects.html"><div class="brand-mark"></div><div class="brand-copy"><strong>TokenLens</strong><span>LLM observability</span></div></a>
+      <div class="workspace-switcher"><span class="label">Workspace</span><strong>Acme AI Platform</strong></div>
+      <div class="nav-section"><h4>Projects</h4><a class="nav-link" href="projects.html">Project list</a><a class="nav-link" href="dashboard.html">Overview</a><a class="nav-link" href="quickstart.html">Quickstart</a><a class="nav-link" href="api-keys.html">API keys</a></div>
+      <div class="nav-section"><h4>Analytics</h4><a class="nav-link" href="usage.html">Usage</a><a class="nav-link" href="cost.html">Cost</a><a class="nav-link" href="latency.html">Latency</a><a class="nav-link" href="errors.html">Errors</a><a class="nav-link active" href="models.html">Models</a></div>
+      <div class="nav-section"><h4>Account</h4><a class="nav-link" href="settings.html">Settings</a><a class="nav-link" href="billing.html">Billing</a></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <div class="breadcrumbs">App / Projects / Customer Support Copilot / Models</div>
+          <h1>Models and providers</h1>
+          <p>A focused breakdown of provider and model mix so traffic, cost, latency, and errors can be interpreted in context.</p>
+        </div>
+        <div class="topbar-actions"><span class="select">Last 7 days</span><span class="select">By provider</span><a class="btn" href="cost.html">See cost</a><a class="btn primary" href="errors.html">See errors</a></div>
+      </header>
+
+      <div class="container">
+        <section class="hero">
+          <div>
+            <span class="badge">Analytics</span>
+            <h2>Compare model behavior before making optimization calls.</h2>
+            <p>The docs call for model and provider analytics as a separate surface. This static page makes the route real and removes another obvious IA gap.</p>
+          </div>
+          <aside>
+            <div class="section-label">Current context</div>
+            <ul class="kpi-list"><li>gpt-4.1-mini handles 67% of requests</li><li>claude-3.5-sonnet is the highest-cost model</li><li>OpenAI is the top provider by spend</li><li>Recommended next action: compare model mix with latency and errors</li></ul>
+          </aside>
+        </section>
+        
+        <div class="stats-grid">
+          <div class="stat"><div class="stat-label">Top model</div><div class="stat-value">gpt-4.1-mini</div><div class="stat-sub">67% of all requests</div></div>
+          <div class="stat"><div class="stat-label">Top provider</div><div class="stat-value">OpenAI</div><div class="stat-sub">61% of spend</div></div>
+          <div class="stat"><div class="stat-label">Highest-cost model</div><div class="stat-value">claude-3.5-sonnet</div><div class="stat-sub">18% of requests · 32% of spend</div></div>
+          <div class="stat"><div class="stat-label">Fastest common model</div><div class="stat-value">text-embedding-3-large</div><div class="stat-sub">Median 410ms</div></div>
+        </div>
+
+        <div class="two-col">
+          <section class="card">
+            <div class="card-header"><div><h3>Provider mix</h3><div class="small muted">Share of project spend</div></div></div>
+            <div class="stacked-bars">
+              <div class="bar-row"><span>OpenAI</span><div class="bar-track"><div class="bar-fill" style="width:61%"></div></div><strong>61%</strong></div>
+              <div class="bar-row"><span>Anthropic</span><div class="bar-track"><div class="bar-fill teal" style="width:26%"></div></div><strong>26%</strong></div>
+              <div class="bar-row"><span>Google</span><div class="bar-track"><div class="bar-fill violet" style="width:9%"></div></div><strong>9%</strong></div>
+              <div class="bar-row"><span>Other</span><div class="bar-track"><div class="bar-fill amber" style="width:4%"></div></div><strong>4%</strong></div>
+            </div>
+          </section>
+          <section class="card">
+            <div class="card-header"><div><h3>What to compare here</h3><div class="small muted">Suggested analysis path</div></div></div>
+            <ul class="check-list">
+              <li>Large spend share with low request share suggests an expensive model.</li>
+              <li>High error or latency on one model may justify routing changes.</li>
+              <li>Provider diversity is useful only if teams can interpret differences quickly.</li>
+            </ul>
+          </section>
+        </div>
+
+        <section class="table-card" style="margin-top:18px;">
+          <div class="table-header"><div><h3>Model comparison</h3><div class="small muted">Compact multi-metric view</div></div></div>
+          <table>
+            <thead><tr><th>Model</th><th>Provider</th><th>Requests</th><th>Spend</th><th>Avg latency</th><th>Error rate</th></tr></thead>
+            <tbody>
+              <tr><td>gpt-4.1-mini</td><td>OpenAI</td><td>792k</td><td>$3,884</td><td>1.12s</td><td>0.31%</td></tr>
+              <tr><td>claude-3.5-sonnet</td><td>Anthropic</td><td>214k</td><td>$2,629</td><td>2.21s</td><td>0.66%</td></tr>
+              <tr><td>text-embedding-3-large</td><td>OpenAI</td><td>119k</td><td>$702</td><td>410ms</td><td>0.08%</td></tr>
+              <tr><td>gemini-1.5-pro</td><td>Google</td><td>58k</td><td>$511</td><td>1.74s</td><td>0.57%</td></tr>
+            </tbody>
+          </table>
+        </section>
+        
+      </div>
+    </main>
+  </div>
+</body>
+</html>

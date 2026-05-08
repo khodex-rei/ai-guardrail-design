@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About TokenLens</title>
+  <link rel="stylesheet" href="styles/design-system.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-text">
+            <span class="brand-name">TokenLens</span>
+            <span class="brand-meta">LLM usage observability</span>
+          </span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a class="nav-link" href="landing.html">Product</a>
+          <a class="nav-link" href="pricing.html">Pricing</a>
+          <a class="nav-link" href="../tokenlens-docs/README.md">Docs</a>
+          <a class="nav-link active" href="about.html">About</a>
+          <a class="nav-link" href="index.html">Design repo</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="button button-ghost" href="../tokenlens-docs/05-sdk/wrapper-client.md">Getting Started</a>
+          <a class="button button-primary" href="landing.html#cta">Start tracking for free</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container two-column">
+          <div>
+            <span class="eyebrow">Why TokenLens exists</span>
+            <h1>Making LLM usage understandable, measurable, and manageable.</h1>
+            <p>TokenLens is built for developers and teams who need application-level visibility into token usage, cost, latency, errors, and model behavior without building an observability pipeline from scratch.</p>
+          </div>
+          <aside class="panel">
+            <div class="kicker">Product philosophy</div>
+            <h2 class="panel-title">Beautiful through clarity</h2>
+            <p class="muted">The design direction stays technical and calm because operational and billing data should feel reliable, not theatrical.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container grid grid-2">
+          <article class="card">
+            <div class="kicker">Problem</div>
+            <h3>Provider dashboards are not enough</h3>
+            <p class="muted">Most teams can see isolated provider metrics, but not which application routes, features, users, or workflows are driving token usage and cost across providers.</p>
+          </article>
+          <article class="card">
+            <div class="kicker">Response</div>
+            <h3>TokenLens connects usage to application context</h3>
+            <p class="muted">By capturing request metadata through a lightweight SDK, teams can monitor cost and reliability where the work actually happens: inside product flows and backend services.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Principles</span>
+            <h2>How the product should feel and behave</h2>
+          </div>
+          <div class="grid grid-3">
+            <article class="card">
+              <h3>Developer-first integration</h3>
+              <p class="muted">The first success moment is seeing the first event received quickly after installing the SDK and wrapping a client.</p>
+            </article>
+            <article class="card">
+              <h3>Insight before noise</h3>
+              <p class="muted">Dashboards should surface cost, usage, latency, and errors clearly before pushing users into raw event detail.</p>
+            </article>
+            <article class="card">
+              <h3>Deliberate trust</h3>
+              <p class="muted">Sensitive workflows such as API key management, data retention, and billing should feel explicit and safe.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="cta" class="section">
+        <div class="container panel center">
+          <span class="eyebrow">Next step</span>
+          <h2>Start with one project and your first LLM event.</h2>
+          <p class="section-intro">The product loop is simple: create a project, generate an API key, install the SDK, send a request, and inspect usage in the dashboard after the first event received.</p>
+          <div class="hero-actions centered-actions">
+            <a class="button button-primary" href="landing.html">View product page</a>
+            <a class="button button-secondary" href="pricing.html">View pricing</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid small">
+        <span>TokenLens</span>
+        <span>About page prototype for static review</span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

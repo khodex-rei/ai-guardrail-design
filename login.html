@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — TokenLens</title>
+  <link rel="stylesheet" href="assets/auth-onboarding.css">
+</head>
+<body>
+  <header class="page-nav">
+    <div class="shell">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>TokenLens</span>
+      </a>
+      <nav class="nav-links" aria-label="Auth routes">
+        <span>/login</span>
+        <a href="signup.html">Create account</a>
+        <a href="forgot-password.html">Forgot password</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="shell page-grid">
+      <section class="card stack-lg" aria-labelledby="login-title">
+        <div>
+          <span class="kicker">Authentication</span>
+          <h1 id="login-title">Welcome back</h1>
+          <p class="lead">Sign in to your TokenLens workspace.</p>
+          <p class="subtle">Returning users are redirected to <span class="inline-code">/app</span> or <span class="inline-code">/onboarding</span> if setup is not finished.</p>
+        </div>
+
+        <div class="stack">
+          <a class="provider" href="auth/callback.html">
+            <span class="provider-badge">G</span>
+            <span>Continue with Google</span>
+          </a>
+          <a class="provider" href="auth/callback.html">
+            <span class="provider-badge">GH</span>
+            <span>Continue with GitHub</span>
+          </a>
+        </div>
+
+        <div class="divider">or continue with email</div>
+
+        <form class="form-grid">
+          <div class="field">
+            <label for="email">Email</label>
+            <input class="input" id="email" type="email" placeholder="name@company.com" value="dev@tokenlens.io">
+          </div>
+
+          <div class="field">
+            <div class="helper-links">
+              <label for="password">Password</label>
+              <a href="forgot-password.html">Forgot password?</a>
+            </div>
+            <div class="input-group">
+              <input id="password" type="password" value="tokenlens-demo-password">
+              <span class="subtle">Show</span>
+            </div>
+          </div>
+
+          <div class="alert error">
+            Invalid email or password. If this account uses Google or GitHub sign-in, continue with that provider instead.
+          </div>
+
+          <button class="button loading" type="button">Signing in</button>
+        </form>
+
+        <div class="auth-footer">
+          <span class="subtle">No account yet?</span>
+          <a href="signup.html">Create one</a>
+        </div>
+      </section>
+
+      <aside class="sidebar-grid">
+        <section class="panel stack">
+          <h2>Expected login flow</h2>
+          <ul class="route-list">
+            <li><strong>Email/password success:</strong> redirect to safe intended route or <span class="inline-code">/app</span>.</li>
+            <li><strong>Onboarding incomplete:</strong> redirect to <span class="inline-code">/onboarding</span>.</li>
+            <li><strong>Authenticated user visits /login:</strong> redirect away from auth pages.</li>
+          </ul>
+        </section>
+
+        <section class="state-grid">
+          <article class="state-card stack">
+            <span class="kicker warning">Provider mismatch</span>
+            <h3>Safe error copy</h3>
+            <p>This account uses Google sign-in. Continue with Google instead.</p>
+            <div class="row">
+              <span class="route-pill">Retry with Google</span>
+              <span class="route-pill">Back to email</span>
+            </div>
+          </article>
+
+          <article class="state-card stack">
+            <span class="kicker success">Success redirect</span>
+            <h3>Short transition state</h3>
+            <p>Signed in successfully. Redirecting to your workspace.</p>
+            <div class="status-line"><span class="dot success"></span><span>Redirect target resolved: <span class="inline-code">/app</span></span></div>
+          </article>
+        </section>
+
+        <section class="code-card">
+<pre>POST /auth/login
+- validate email
+- validate password
+- create secure session cookie
+- redirect to /onboarding if setup incomplete
+- otherwise redirect to /app</pre>
+        </section>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

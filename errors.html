@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error analytics — TokenLens</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="projects.html"><div class="brand-mark"></div><div class="brand-copy"><strong>TokenLens</strong><span>LLM observability</span></div></a>
+      <div class="workspace-switcher"><span class="label">Workspace</span><strong>Acme AI Platform</strong></div>
+      <div class="nav-section"><h4>Projects</h4><a class="nav-link" href="projects.html">Project list</a><a class="nav-link" href="dashboard.html">Overview</a><a class="nav-link" href="quickstart.html">Quickstart</a><a class="nav-link" href="api-keys.html">API keys</a></div>
+      <div class="nav-section"><h4>Analytics</h4><a class="nav-link" href="usage.html">Usage</a><a class="nav-link" href="cost.html">Cost</a><a class="nav-link" href="latency.html">Latency</a><a class="nav-link active" href="errors.html">Errors</a><a class="nav-link" href="models.html">Models</a></div>
+      <div class="nav-section"><h4>Account</h4><a class="nav-link" href="settings.html">Settings</a><a class="nav-link" href="billing.html">Billing</a></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <div class="breadcrumbs">App / Projects / Customer Support Copilot / Errors</div>
+          <h1>Error analytics</h1>
+          <p>An error-focused page for isolating failure modes by status, provider, route, and recent request examples.</p>
+        </div>
+        <div class="topbar-actions"><span class="select">Last 7 days</span><span class="select">Status code</span><a class="btn" href="latency.html">Compare latency</a><a class="btn primary" href="models.html">Inspect models</a></div>
+      </header>
+
+      <div class="container">
+        <section class="hero">
+          <div>
+            <span class="badge">Analytics</span>
+            <h2>Use error trends to decide whether the issue is traffic, provider behavior, or application logic.</h2>
+            <p>This view replaces the broken errors link with a compact static surface built around observability triage and debugging flow.</p>
+          </div>
+          <aside>
+            <div class="section-label">Current context</div>
+            <ul class="kpi-list"><li>Current error rate: 0.44%</li><li>429 rate limits are the largest segment</li><li>Timeouts are concentrated in one provider</li><li>Recommended next action: compare noisy route and model combinations</li></ul>
+          </aside>
+        </section>
+        
+        <div class="stats-grid">
+          <div class="stat"><div class="stat-label">Error rate</div><div class="stat-value">0.44%</div><div class="stat-sub">Down from 0.58% last week</div></div>
+          <div class="stat"><div class="stat-label">429 rate limits</div><div class="stat-value">44%</div><div class="stat-sub">Largest failure bucket</div></div>
+          <div class="stat"><div class="stat-label">Provider timeouts</div><div class="stat-value">37%</div><div class="stat-sub">Mostly on summarize flows</div></div>
+          <div class="stat"><div class="stat-label">Retry exhausted</div><div class="stat-value">19%</div><div class="stat-sub">Check SDK retry settings</div></div>
+        </div>
+
+        <div class="two-col">
+          <section class="card">
+            <div class="card-header"><div><h3>Error composition</h3><div class="small muted">Most common failure modes</div></div></div>
+            <div class="stacked-bars">
+              <div class="bar-row"><span>429 rate limit</span><div class="bar-track"><div class="bar-fill amber" style="width:44%"></div></div><strong>44%</strong></div>
+              <div class="bar-row"><span>Provider timeout</span><div class="bar-track"><div class="bar-fill red" style="width:37%"></div></div><strong>37%</strong></div>
+              <div class="bar-row"><span>SDK retry exhausted</span><div class="bar-track"><div class="bar-fill" style="width:19%"></div></div><strong>19%</strong></div>
+            </div>
+          </section>
+          <section class="list-card">
+            <div class="list-header"><div><h3>Triage checklist</h3><div class="small muted">Suggested debugging order</div></div></div>
+            <div class="timeline">
+              <div class="timeline-item"><h4>Filter by route</h4><p>Confirm whether one endpoint is creating most failures.</p></div>
+              <div class="timeline-item"><h4>Compare provider and model</h4><p>Separate upstream failures from app-level issues.</p></div>
+              <div class="timeline-item"><h4>Cross-check latency</h4><p>Timeouts and high p95 often move together.</p></div>
+            </div>
+          </section>
+        </div>
+
+        <section class="table-card" style="margin-top:18px;">
+          <div class="table-header"><div><h3>Recent failed requests</h3><div class="small muted">Compact examples for incident review</div></div></div>
+          <table>
+            <thead><tr><th>Request</th><th>Route</th><th>Model</th><th>Status</th><th>Failure mode</th><th>Next step</th></tr></thead>
+            <tbody>
+              <tr><td class="code">req_74ac18</td><td>/answer-ticket</td><td>gpt-4.1-mini</td><td><span class="status warn">429</span></td><td>Provider rate limit</td><td>Review retry and queueing</td></tr>
+              <tr><td class="code">req_74abb0</td><td>/summarize-thread</td><td>claude-3.5-sonnet</td><td><span class="status error">504</span></td><td>Upstream timeout</td><td>Compare latency and output length</td></tr>
+              <tr><td class="code">req_74ab51</td><td>/triage-ticket</td><td>gemini-1.5-pro</td><td><span class="status error">500</span></td><td>Retry exhausted</td><td>Check SDK retry policy</td></tr>
+              <tr><td class="code">req_74ab1d</td><td>/retrieve-context</td><td>text-embedding-3-large</td><td><span class="status warn">429</span></td><td>Burst on embedding path</td><td>Throttle batch fan-out</td></tr>
+            </tbody>
+          </table>
+        </section>
+        
+      </div>
+    </main>
+  </div>
+</body>
+</html>

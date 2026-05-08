@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onboarding Project — TokenLens</title>
+  <link rel="stylesheet" href="assets/auth-onboarding.css">
+</head>
+<body class="route-onboarding">
+  <header class="page-nav">
+    <div class="shell">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>TokenLens</span>
+      </a>
+      <nav class="nav-links" aria-label="Onboarding project routes">
+        <a href="onboarding.html">/onboarding</a>
+        <span>/onboarding/project</span>
+        <a href="dashboard.html">Preview /app</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="shell page-grid">
+      <section class="card stack-lg">
+        <div>
+          <span class="kicker">/onboarding/project</span>
+          <h1>Create your first project</h1>
+          <p class="lead">Projects represent the apps or services sending TokenLens events.</p>
+        </div>
+        <div class="progress"><span style="width:34%"></span></div>
+        <form class="form-grid">
+          <div class="field">
+            <label for="project-name">Project name</label>
+            <input class="input" id="project-name" type="text" value="Production API">
+          </div>
+          <div class="field">
+            <label for="environment">Primary environment</label>
+            <select class="select" id="environment">
+              <option>Production</option>
+              <option>Staging</option>
+              <option>Development</option>
+            </select>
+          </div>
+          <button class="button" type="button">Create project</button>
+        </form>
+        <div class="row">
+          <a class="ghost-button" href="onboarding-workspace.html">Back to workspace</a>
+          <a class="button secondary" href="onboarding-api-key.html">Continue to API key</a>
+        </div>
+      </section>
+
+      <aside class="sidebar-grid">
+        <section class="state-card stack">
+          <span class="kicker warning">Prerequisite</span>
+          <p>If the user does not have a workspace yet, redirect them to <span class="inline-code">/onboarding/workspace</span>.</p>
+        </section>
+        <section class="state-card stack">
+          <span class="kicker">Redirect rule</span>
+          <p>If a project already exists, continue to <span class="inline-code">/onboarding/api-key</span> instead of showing this step again.</p>
+        </section>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — TokenLens</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="projects.html"><div class="brand-mark"></div><div class="brand-copy"><strong>TokenLens</strong><span>LLM observability</span></div></a>
+      <div class="workspace-switcher"><span class="label">Workspace</span><strong>Acme AI Platform</strong></div>
+      <div class="nav-section"><h4>Projects</h4><a class="nav-link active" href="projects.html">Project list</a><a class="nav-link" href="dashboard.html">Overview</a><a class="nav-link" href="quickstart.html">Quickstart</a><a class="nav-link" href="api-keys.html">API keys</a></div>
+      <div class="nav-section"><h4>Analytics</h4><a class="nav-link" href="usage.html">Usage</a><a class="nav-link" href="cost.html">Cost</a><a class="nav-link" href="latency.html">Latency</a><a class="nav-link" href="errors.html">Errors</a><a class="nav-link" href="models.html">Models</a></div>
+      <div class="nav-section"><h4>Account</h4><a class="nav-link" href="settings.html">Settings</a><a class="nav-link" href="billing.html">Billing</a></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <div class="breadcrumbs">App / Projects</div>
+          <h1>Projects</h1>
+          <p>Pick a project and jump into the observability workflow the docs describe: overview first, then focused analytics pages when something looks off.</p>
+        </div>
+        <div class="topbar-actions"><a class="btn primary" href="dashboard.html">Open project overview</a><a class="btn" href="quickstart.html">Review quickstart</a></div>
+      </header>
+
+      <div class="container">
+        <section class="hero">
+          <div>
+            <span class="badge">Workspace overview</span>
+            <h2>Projects keep the app scoped around one workload at a time.</h2>
+            <p>This shell now mirrors the docs route model more closely: a project list entrypoint, a project overview, then usage, cost, latency, error, model, API key, settings, and billing surfaces.</p>
+          </div>
+          <aside>
+            <div class="section-label">Current context</div>
+            <ul class="kpi-list"><li>3 active projects in this workspace</li><li>Customer Support Copilot has the highest traffic</li><li>One onboarding flow points teams to SDK install and first event capture</li><li>Calm technical styling replaces older drifted app concepts</li></ul>
+          </aside>
+        </section>
+        
+        <div class="project-grid">
+          <section class="project-card">
+            <div class="project-meta"><span class="health-dot ok"></span> Healthy · Production</div>
+            <h3>Customer Support Copilot</h3>
+            <p>High-volume support assistant with OpenAI and Anthropic traffic, retrieval-heavy prompts, and steady weekly growth.</p>
+            <div class="project-meta">1.18M requests · 846M tokens · $8.2k estimated cost · 0.44% error rate</div>
+            <div class="inline-actions"><a class="btn primary" href="dashboard.html">Open overview</a><a class="btn" href="errors.html">Open errors</a></div>
+          </section>
+          <section class="project-card">
+            <div class="project-meta"><span class="health-dot warn"></span> Needs review · Staging</div>
+            <h3>Sales Demo Agent</h3>
+            <p>Smaller project used for scripted demo flows. Latency tails widened after a model swap and should be compared by route.</p>
+            <div class="project-meta">142k requests · 74M tokens · $912 estimated cost · 1.02% error rate</div>
+            <div class="inline-actions"><a class="btn" href="latency.html">Check latency</a><a class="btn" href="models.html">Inspect models</a></div>
+          </section>
+          <section class="project-card">
+            <div class="project-meta"><span class="health-dot ok"></span> Healthy · Batch</div>
+            <h3>Internal Summarization</h3>
+            <p>Nightly summarization jobs with predictable token volume and low error rates. Billing and API keys are handled by a shared platform team.</p>
+            <div class="project-meta">88k requests · 190M tokens · $1.7k estimated cost · 0.12% error rate</div>
+            <div class="inline-actions"><a class="btn" href="cost.html">View cost</a><a class="btn" href="api-keys.html">Manage keys</a></div>
+          </section>
+        </div>
+
+        <div class="two-col">
+          <section class="list-card">
+            <div class="list-header"><div><h3>What the app shell now covers</h3><div class="small muted">Docs-aligned navigation instead of the older drifted IA</div></div></div>
+            <div class="timeline">
+              <div class="timeline-item"><h4>Project overview</h4><p>Daily snapshot across requests, tokens, spend, latency, errors, and top providers or models.</p></div>
+              <div class="timeline-item"><h4>Focused analytics</h4><p>Separate usage, cost, latency, errors, and models pages support drill-downs without overloading the overview.</p></div>
+              <div class="timeline-item"><h4>Project operations</h4><p>Quickstart and API keys stay project-scoped, while settings and billing remain account-level.</p></div>
+            </div>
+          </section>
+          <section class="card">
+            <div class="card-header"><div><h3>Recommended review path</h3><div class="small muted">Matches insight first, details second</div></div></div>
+            <ul class="check-list">
+              <li>Start on the project overview for anomalies and trend direction.</li>
+              <li>Open usage or cost if volume or spend moved unexpectedly.</li>
+              <li>Open latency or errors when service health looks degraded.</li>
+              <li>Open models to confirm whether one provider or model caused the shift.</li>
+              <li>Use quickstart and API keys when activating a new project.</li>
+            </ul>
+          </section>
+        </div>
+        
+      </div>
+    </main>
+  </div>
+</body>
+</html>

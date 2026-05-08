@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SDK quickstart — TokenLens</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="projects.html"><div class="brand-mark"></div><div class="brand-copy"><strong>TokenLens</strong><span>LLM observability</span></div></a>
+      <div class="workspace-switcher"><span class="label">Workspace</span><strong>Acme AI Platform</strong></div>
+      <div class="nav-section"><h4>Projects</h4><a class="nav-link" href="projects.html">Project list</a><a class="nav-link" href="dashboard.html">Overview</a><a class="nav-link active" href="quickstart.html">Quickstart</a><a class="nav-link" href="api-keys.html">API keys</a></div>
+      <div class="nav-section"><h4>Analytics</h4><a class="nav-link" href="usage.html">Usage</a><a class="nav-link" href="cost.html">Cost</a><a class="nav-link" href="latency.html">Latency</a><a class="nav-link" href="errors.html">Errors</a><a class="nav-link" href="models.html">Models</a></div>
+      <div class="nav-section"><h4>Account</h4><a class="nav-link" href="settings.html">Settings</a><a class="nav-link" href="billing.html">Billing</a></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <div class="breadcrumbs">App / Projects / Customer Support Copilot / Quickstart</div>
+          <h1>SDK quickstart</h1>
+          <p>A docs-aligned activation page for getting the first project instrumented and sending the first event into TokenLens.</p>
+        </div>
+        <div class="topbar-actions"><a class="btn primary" href="api-keys.html">Create API key</a><a class="btn" href="dashboard.html">Open overview</a></div>
+      </header>
+
+      <div class="container">
+        <section class="hero">
+          <div>
+            <span class="badge">Project activation</span>
+            <h2>Install the SDK, capture one request, then verify it in the overview.</h2>
+            <p>The quickstart focuses on the minimum developer path: add an API key, instrument request metadata, send a test prompt, and confirm that aggregated metrics appear in the project dashboard.</p>
+          </div>
+          <aside>
+            <div class="section-label">Current context</div>
+            <ul class="kpi-list"><li>Time to first event target: under 10 minutes</li><li>Scope fields: provider, model, route, status, tokens, latency, tags</li><li>Verification path: projects → overview → recent requests</li><li>Use this page as a static placeholder for the eventual docs-backed app route</li></ul>
+          </aside>
+        </section>
+        
+        <div class="guide-row">
+          <section class="guide-step">
+            <div class="card-header"><div><h3>Quickstart steps</h3><div class="small muted">Insight first, details second</div></div></div>
+            <div class="timeline">
+              <div class="timeline-item"><h4>1. Create a project-scoped key</h4><p>Generate a server-side ingestion key and copy it into the app runtime or local development environment.</p></div>
+              <div class="timeline-item"><h4>2. Wrap one production-like route</h4><p>Start with the route that carries the most traffic or cost so the overview becomes useful quickly.</p></div>
+              <div class="timeline-item"><h4>3. Capture normalized metadata</h4><p>Send request ID, route, provider, model, latency, token counts, estimated cost, tags, and final status.</p></div>
+              <div class="timeline-item"><h4>4. Verify the first event</h4><p>Use recent requests and the aggregate cards in the overview to confirm ingestion and expected dimensions.</p></div>
+            </div>
+          </section>
+          <aside class="card">
+            <div class="card-header"><div><h3>Implementation checklist</h3><div class="small muted">Suggested MVP instrumentation</div></div></div>
+            <ul class="check-list">
+              <li>Attach a stable request ID for drill-downs.</li>
+              <li>Record provider and model on every call.</li>
+              <li>Send input and output token counts separately.</li>
+              <li>Track latency in milliseconds for percentile views.</li>
+              <li>Tag environment, route, and workload type.</li>
+            </ul>
+          </aside>
+        </div>
+
+        <div class="two-col">
+          <section class="card">
+            <div class="card-header"><div><h3>Example event payload</h3><div class="small muted">Static reference for design review</div></div></div>
+            <div class="code-block">POST /v1/events
+{
+  "request_id": "req_74ac91",
+  "route": "/answer-ticket",
+  "provider": "openai",
+  "model": "gpt-4.1-mini",
+  "latency_ms": 1120,
+  "input_tokens": 621,
+  "output_tokens": 148,
+  "estimated_cost_usd": 0.0049,
+  "status_code": 200,
+  "tags": ["production", "support"]
+}</div>
+          </section>
+          <section class="list-card">
+            <div class="list-header"><div><h3>After the first event</h3><div class="small muted">Suggested next route links</div></div></div>
+            <div class="quick-links">
+              <div class="quick-link"><div><strong>Overview</strong><div class="small muted">Confirm aggregate cards and recent requests render correctly.</div></div><a class="btn" href="dashboard.html">Open</a></div>
+              <div class="quick-link"><div><strong>Usage</strong><div class="small muted">Validate request and token trends over time.</div></div><a class="btn" href="usage.html">Open</a></div>
+              <div class="quick-link"><div><strong>API keys</strong><div class="small muted">Rotate or issue separate keys for environments.</div></div><a class="btn" href="api-keys.html">Open</a></div>
+            </div>
+          </section>
+        </div>
+        
+      </div>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latency analytics — TokenLens</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="projects.html"><div class="brand-mark"></div><div class="brand-copy"><strong>TokenLens</strong><span>LLM observability</span></div></a>
+      <div class="workspace-switcher"><span class="label">Workspace</span><strong>Acme AI Platform</strong></div>
+      <div class="nav-section"><h4>Projects</h4><a class="nav-link" href="projects.html">Project list</a><a class="nav-link" href="dashboard.html">Overview</a><a class="nav-link" href="quickstart.html">Quickstart</a><a class="nav-link" href="api-keys.html">API keys</a></div>
+      <div class="nav-section"><h4>Analytics</h4><a class="nav-link" href="usage.html">Usage</a><a class="nav-link" href="cost.html">Cost</a><a class="nav-link active" href="latency.html">Latency</a><a class="nav-link" href="errors.html">Errors</a><a class="nav-link" href="models.html">Models</a></div>
+      <div class="nav-section"><h4>Account</h4><a class="nav-link" href="settings.html">Settings</a><a class="nav-link" href="billing.html">Billing</a></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <div class="breadcrumbs">App / Projects / Customer Support Copilot / Latency</div>
+          <h1>Latency analytics</h1>
+          <p>A dedicated percentile and slow-route view for debugging response time regressions inside one project.</p>
+        </div>
+        <div class="topbar-actions"><span class="select">Last 7 days</span><span class="select">Percentiles</span><a class="btn" href="errors.html">Check errors</a><a class="btn primary" href="dashboard.html">Back to overview</a></div>
+      </header>
+
+      <div class="container">
+        <section class="hero">
+          <div>
+            <span class="badge">Analytics</span>
+            <h2>Use percentiles and route comparisons to confirm where time is going.</h2>
+            <p>Latency analytics separates service-speed questions from the overview. It keeps the first page calm while still giving teams a direct route into percentile tracking and slow request examples.</p>
+          </div>
+          <aside>
+            <div class="section-label">Current context</div>
+            <ul class="kpi-list"><li>p50 820ms</li><li>p95 1.84s</li><li>p99 2.67s</li><li>Recommended next action: compare slow routes against error spikes</li></ul>
+          </aside>
+        </section>
+        
+        <div class="stats-grid">
+          <div class="stat"><div class="stat-label">p50 latency</div><div class="stat-value">820ms</div><div class="stat-sub">Healthy median</div></div>
+          <div class="stat"><div class="stat-label">p95 latency</div><div class="stat-value">1.84s</div><div class="stat-sub">+180ms vs last week</div></div>
+          <div class="stat"><div class="stat-label">p99 latency</div><div class="stat-value">2.67s</div><div class="stat-sub">Mostly tied to provider retries</div></div>
+          <div class="stat"><div class="stat-label">Slowest route</div><div class="stat-value code">/summarize-thread</div><div class="stat-sub">Long generations</div></div>
+        </div>
+
+        <div class="panel-grid">
+          <section class="card"><div class="card-header"><div><h3>Latency percentiles</h3><div class="small muted">Quick percentile scan</div></div></div><div class="progress"><div><strong>p50</strong> 820ms</div><div class="progress-track"><div class="progress-fill teal" style="width:34%"></div></div><div><strong>p95</strong> 1.84s</div><div class="progress-track"><div class="progress-fill" style="width:63%"></div></div><div><strong>p99</strong> 2.67s</div><div class="progress-track"><div class="progress-fill amber" style="width:78%"></div></div></div></section>
+          <section class="card"><div class="card-header"><div><h3>Likely contributing factors</h3><div class="small muted">Static placeholder analysis</div></div></div><ul class="bullet-list"><li>Longer output lengths on summarize flows.</li><li>Provider-side retries after rate-limits.</li><li>Retrieval context inflation for escalations.</li></ul></section>
+          <section class="card"><div class="card-header"><div><h3>Debugging path</h3><div class="small muted">Clear next step</div></div></div><ul class="check-list"><li>Compare slow routes to model usage.</li><li>Check if slow requests overlap 429 or timeout errors.</li><li>Review recent request examples for outliers.</li></ul></section>
+        </div>
+
+        <div class="two-col" style="margin-top:18px;">
+          <section class="table-card">
+            <div class="table-header"><div><h3>Slow routes</h3><div class="small muted">Route-level summary</div></div></div>
+            <table>
+              <thead><tr><th>Route</th><th>p50</th><th>p95</th><th>p99</th><th>Trend</th></tr></thead>
+              <tbody>
+                <tr><td class="code">/summarize-thread</td><td>1.12s</td><td>2.61s</td><td>3.88s</td><td><span class="status warn">Worse</span></td></tr>
+                <tr><td class="code">/answer-ticket</td><td>770ms</td><td>1.72s</td><td>2.41s</td><td><span class="status ok">Stable</span></td></tr>
+                <tr><td class="code">/retrieve-context</td><td>410ms</td><td>930ms</td><td>1.29s</td><td><span class="status ok">Stable</span></td></tr>
+                <tr><td class="code">/triage-ticket</td><td>980ms</td><td>2.18s</td><td>2.94s</td><td><span class="status info">Watch</span></td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section class="list-card">
+            <div class="list-header"><div><h3>Recent slow request examples</h3><div class="small muted">Compact drill-down substitute</div></div></div>
+            <div class="runbook-list">
+              <div class="runbook-item"><div><strong class="code">req_74ac6d</strong><div class="small muted">/summarize-thread · claude-3.5-sonnet · 2.44s</div></div></div>
+              <div class="runbook-item"><div><strong class="code">req_74ac18</strong><div class="small muted">/answer-ticket · gpt-4.1-mini · 3.08s with retry</div></div></div>
+              <div class="runbook-item"><div><strong class="code">req_74ab97</strong><div class="small muted">/triage-ticket · gemini-1.5-pro · 2.91s</div></div></div>
+            </div>
+          </section>
+        </div>
+        
+      </div>
+    </main>
+  </div>
+</body>
+</html>

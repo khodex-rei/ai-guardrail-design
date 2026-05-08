@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify Email — TokenLens</title>
+  <link rel="stylesheet" href="assets/auth-onboarding.css">
+</head>
+<body>
+  <header class="page-nav">
+    <div class="shell">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>TokenLens</span>
+      </a>
+      <nav class="nav-links" aria-label="Verify email routes">
+        <span>/verify-email</span>
+        <a href="login.html">Back to login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="shell page-grid">
+      <section class="card stack-lg">
+        <div>
+          <span class="kicker">Email verification</span>
+          <h1>Verify your email</h1>
+          <p class="lead">We sent a verification link to your email address before continuing to onboarding.</p>
+        </div>
+
+        <div class="status-line">
+          <span class="dot"></span>
+          <span>Pending verification for <strong>dev@tokenlens.io</strong></span>
+        </div>
+
+        <div class="stack">
+          <button class="button secondary" type="button">Resend verification email</button>
+          <a class="ghost-button" href="login.html">Back to login</a>
+        </div>
+      </section>
+
+      <aside class="sidebar-grid">
+        <article class="state-card stack">
+          <span class="kicker success">Resend success</span>
+          <div class="alert success">Verification email sent. Check your inbox.</div>
+        </article>
+
+        <article class="state-card stack">
+          <span class="kicker danger">Resend error</span>
+          <div class="alert error">We could not resend the verification email right now. Please try again later.</div>
+        </article>
+
+        <section class="panel stack">
+          <h2>Access rules</h2>
+          <ul class="route-list">
+            <li><strong>Authenticated + unverified:</strong> allow.</li>
+            <li><strong>Authenticated + verified:</strong> redirect to <span class="inline-code">/onboarding</span> or <span class="inline-code">/app</span>.</li>
+            <li><strong>Unauthenticated:</strong> MVP fallback to <span class="inline-code">/login</span>.</li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API keys — TokenLens</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="projects.html"><div class="brand-mark"></div><div class="brand-copy"><strong>TokenLens</strong><span>LLM observability</span></div></a>
+      <div class="workspace-switcher"><span class="label">Workspace</span><strong>Acme AI Platform</strong></div>
+      <div class="nav-section"><h4>Projects</h4><a class="nav-link" href="projects.html">Project list</a><a class="nav-link" href="dashboard.html">Overview</a><a class="nav-link" href="quickstart.html">Quickstart</a><a class="nav-link active" href="api-keys.html">API keys</a></div>
+      <div class="nav-section"><h4>Analytics</h4><a class="nav-link" href="usage.html">Usage</a><a class="nav-link" href="cost.html">Cost</a><a class="nav-link" href="latency.html">Latency</a><a class="nav-link" href="errors.html">Errors</a><a class="nav-link" href="models.html">Models</a></div>
+      <div class="nav-section"><h4>Account</h4><a class="nav-link" href="settings.html">Settings</a><a class="nav-link" href="billing.html">Billing</a></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <div class="breadcrumbs">App / Projects / Customer Support Copilot / API keys</div>
+          <h1>API keys</h1>
+          <p>Project-scoped credentials for ingestion and environment separation, using a calmer TokenLens operations framing.</p>
+        </div>
+        <div class="topbar-actions"><a class="btn primary" href="quickstart.html">Use in quickstart</a><a class="btn" href="settings.html">Workspace settings</a></div>
+      </header>
+
+      <div class="container">
+        <section class="hero">
+          <div>
+            <span class="badge">Project operations</span>
+            <h2>Keep ingestion keys narrow, labeled, and easy to rotate.</h2>
+            <p>This placeholder focuses on docs-aligned API key management rather than broader platform administration. Keys are tied to a project and environment so teams can activate or revoke access safely.</p>
+          </div>
+          <aside>
+            <div class="section-label">Current context</div>
+            <ul class="kpi-list"><li>3 active keys</li><li>2 production keys · 1 staging key</li><li>Last rotation completed 11 days ago</li><li>Recommended next action: split local testing from shared staging</li></ul>
+          </aside>
+        </section>
+        
+        <div class="key-row">
+          <section class="key-card">
+            <div class="card-header"><div><h3>Production ingest</h3><div class="small muted">Server-side only</div></div><span class="status ok">Active</span></div>
+            <div class="key-meta"><span class="code">tl_prod_9f1...4be</span><span>Created by Platform Ops</span><span>Last used 4 minutes ago</span></div>
+            <ul class="bullet-list"><li>Routes traffic from the customer support API.</li><li>Tagged to production and support workloads.</li><li>Primary source for overview and error analytics.</li></ul>
+          </section>
+          <section class="key-card">
+            <div class="card-header"><div><h3>Staging verification</h3><div class="small muted">Used for pre-release instrumentation checks</div></div><span class="status warn">Rotate soon</span></div>
+            <div class="key-meta"><span class="code">tl_stage_22a...90c</span><span>Created by Maya</span><span>Last used 2 hours ago</span></div>
+            <ul class="bullet-list"><li>Scoped to staging traffic only.</li><li>Used during SDK verification and schema testing.</li><li>Recommended rotation before the next release branch.</li></ul>
+          </section>
+        </div>
+
+        <div class="two-col">
+          <section class="card">
+            <div class="card-header"><div><h3>Create a new key</h3><div class="small muted">Static form placeholder</div></div></div>
+            <div class="field-grid">
+              <div class="field"><label>Label</label><div class="input">Local development ingest</div></div>
+              <div class="field"><label>Environment</label><div class="input">Development</div></div>
+              <div class="field"><label>Allowed tags</label><div class="input">local, sandbox</div></div>
+              <div class="field"><label>Rotation note</label><div class="input">Rotate every 30 days or after team handoff</div></div>
+            </div>
+          </section>
+          <section class="list-card">
+            <div class="list-header"><div><h3>Key management guidance</h3><div class="small muted">Recommended defaults for the eventual real app</div></div></div>
+            <div class="summary-list">
+              <div class="summary-item"><div><strong>Separate by environment</strong><div class="small muted">Production, staging, and local testing should not share the same key.</div></div></div>
+              <div class="summary-item"><div><strong>Prefer server-side storage</strong><div class="small muted">Avoid exposing ingest keys to browsers or distributed client bundles.</div></div></div>
+              <div class="summary-item"><div><strong>Label by owning service</strong><div class="small muted">This makes usage and incident follow-up much easier during debugging.</div></div></div>
+            </div>
+          </section>
+        </div>
+        
+      </div>
+    </main>
+  </div>
+</body>
+</html>

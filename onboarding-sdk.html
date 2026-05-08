@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onboarding SDK — TokenLens</title>
+  <link rel="stylesheet" href="assets/auth-onboarding.css">
+</head>
+<body class="route-onboarding">
+  <header class="page-nav">
+    <div class="shell">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>TokenLens</span>
+      </a>
+      <nav class="nav-links" aria-label="Onboarding SDK routes">
+        <a href="onboarding.html">/onboarding</a>
+        <span>/onboarding/sdk</span>
+        <a href="dashboard.html">Preview /app</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="shell page-grid">
+      <section class="card stack-lg">
+        <div>
+          <span class="kicker">/onboarding/sdk</span>
+          <h1>Install the SDK and send a test event</h1>
+          <p class="lead">Choose a language, copy the install command, configure the API key, and wrap the client.</p>
+        </div>
+        <div class="progress"><span style="width:76%"></span></div>
+
+        <div class="form-row two">
+          <div class="field">
+            <label for="language">SDK language</label>
+            <select class="select" id="language">
+              <option>Python</option>
+              <option>TypeScript</option>
+              <option>Node.js</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="provider">Provider</label>
+            <select class="select" id="provider">
+              <option>OpenAI</option>
+              <option>Anthropic</option>
+              <option>Google</option>
+            </select>
+          </div>
+        </div>
+
+        <section class="code-card stack">
+<pre>pip install tokenlens
+export TOKENLENS_API_KEY=tl_live_xxxxxxxxx...7w9a
+python send_test_event.py</pre>
+          <button class="code-copy" type="button">Copy install steps</button>
+        </section>
+
+        <div class="alert info">Once the test event is sent, continue to the waiting state and poll for the first event received.</div>
+        <div class="row">
+          <a class="ghost-button" href="onboarding-api-key.html">Back to API key</a>
+          <a class="button secondary" href="onboarding-waiting-for-event.html">Continue to waiting state</a>
+        </div>
+      </section>
+
+      <aside class="sidebar-grid">
+        <section class="panel stack">
+          <h2>Checklist</h2>
+          <ul class="checklist">
+            <li><span class="check-icon">1</span><div>Install the SDK package.</div></li>
+            <li><span class="check-icon">2</span><div>Set <span class="inline-code">TOKENLENS_API_KEY</span>.</div></li>
+            <li><span class="check-icon">3</span><div>Wrap the provider client.</div></li>
+            <li><span class="check-icon">4</span><div>Send a test request.</div></li>
+          </ul>
+        </section>
+        <section class="state-card stack">
+          <span class="kicker warning">Prerequisite</span>
+          <p>If the user is missing a workspace, project, or API key, redirect them to the previous onboarding step before showing SDK setup.</p>
+        </section>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

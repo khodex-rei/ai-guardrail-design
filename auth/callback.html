@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OAuth Callback — TokenLens</title>
+  <link rel="stylesheet" href="../assets/auth-onboarding.css">
+</head>
+<body class="route-callback">
+  <main class="page center-screen">
+    <div class="callback-stack">
+      <section class="card centered">
+        <span class="kicker">/auth/callback</span>
+        <div class="spinner" aria-hidden="true"></div>
+        <h1>Signing you in</h1>
+        <p class="lead">This should only take a moment while TokenLens completes the provider callback.</p>
+        <div class="status-line" style="width:100%;justify-content:center;"><span class="dot"></span><span>Validate provider state, create session, resolve onboarding, redirect.</span></div>
+      </section>
+
+      <section class="route-grid two">
+        <article class="state-card stack">
+          <span class="kicker success">Short success state</span>
+          <h3>Signed in successfully</h3>
+          <p>Redirecting to your workspace.</p>
+          <div class="status-line"><span class="dot success"></span><span>Destination: <span class="inline-code">/onboarding</span></span></div>
+        </article>
+
+        <article class="state-card stack">
+          <span class="kicker danger">Callback error</span>
+          <h3>We could not complete sign-in</h3>
+          <p>The sign-in link may have expired, been cancelled, or failed at the provider.</p>
+          <div class="row">
+            <a class="button secondary" href="../login.html">Back to login</a>
+            <a class="ghost-button" href="../login.html">Try provider again</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="code-card">
+<pre>OAuth callback responsibilities
+- read code / state / error / next
+- validate callback with auth backend
+- create secure session cookie
+- resolve user + onboarding status
+- ignore unsafe redirect targets
+- send user to /app or /onboarding</pre>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
